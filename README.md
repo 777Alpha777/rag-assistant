@@ -32,13 +32,13 @@ flowchart LR
     C[Client] --> A[FastAPI]
     A --> I[Ingest service]
     I --> CH[Chunker<br/>heading breadcrumbs]
-    I --> E[Embedder<br/>hash | openai]
+    I --> E["Embedder<br/>hash or openai"]
     I --> PG[(PostgreSQL<br/>pgvector + tsvector)]
     A --> R[Hybrid retrieval<br/>vector + full-text + RRF]
     R --> PG
-    R --> L[Answerer<br/>stub | openai]
+    R --> L["Answerer<br/>stub or openai"]
     L --> A
-    A --> M[/metrics/]
+    A --> M["/metrics/"]
 ```
 
 Layers: `api` (HTTP contracts) -> `services` (ingest orchestration) -> `retrieval`
